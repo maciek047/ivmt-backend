@@ -24,6 +24,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation") // for @Email and other validation annotations
     implementation("org.springframework.boot:spring-boot-starter-webflux") // for OpenAI WebClient calls
     
     // Database
