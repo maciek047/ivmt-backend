@@ -1,0 +1,56 @@
+server:
+  port: ${PORT:8080}  # Heroku provides the PORT environment variable
+
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/interviewdb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update  # Auto-create/update database schema
+    open-in-view: false  # Best practice: disable lazy loading in views
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false  # Set to true for development debugging
+
+  # Security configuration
+  security:
+    oauth2:
+      client:
+        registration: {}  # TODO: Add OAuth providers if needed
+
+# OpenAI API configuration
+openai:
+  api-key: ${OPENAI_API_KEY:}
+  base-url: https://api.openai.com/v1
+  model: gpt-3.5-turbo
+  max-tokens: 1000
+  temperature: 0.7
+
+# JWT configuration
+jwt:
+  secret: ${JWT_SECRET:change_me_in_production}
+  expiration-ms: 3600000  # 1 hour in milliseconds
+  issuer: interviewmate
+
+# Logging configuration
+logging:
+  level:
+    com.interviewmate: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# Application-specific configuration
+app:
+  free-tier:
+    max-questions: 3  # Number of questions shown to non-subscribed users
+  subscription:
+    required-for-cv: true
+    required-for-full-questions: true
