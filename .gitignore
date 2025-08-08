@@ -107,12 +107,6 @@ local.properties
 /build/test-results/
 /build/reports/
 
-# Kotlin
-*.kt.metadata
-kotlin-js-store/
-kotlin/
-kotlin-native/
-
 # Application specific
 application-local.yml
 application-dev.yml
