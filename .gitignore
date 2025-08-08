@@ -110,7 +110,7 @@ local.properties
 # Kotlin
 *.kt.metadata
 kotlin-js-store/
-kotlin/
+/kotlin/
 kotlin-native/
 
 # Application specific
