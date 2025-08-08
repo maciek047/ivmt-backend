@@ -2,6 +2,9 @@ package com.interviewmate
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.boot.CommandLineRunner
+import org.springframework.context.annotation.Bean
+import com.interviewmate.repository.UserRepository
 
 /**
  * Main Spring Boot application class for InterviewMate backend service.
@@ -16,7 +19,18 @@ import org.springframework.boot.runApplication
  * - Free tier with limited question access
  */
 @SpringBootApplication
-class InterviewMateApplication
+class InterviewMateApplication {
+
+    /**
+     * Simple startup runner that verifies database connectivity and schema creation
+     * by counting existing users.
+     */
+    @Bean
+    fun initDatabase(userRepository: UserRepository): CommandLineRunner = CommandLineRunner {
+        val userCount = userRepository.count()
+        println("Database ready: user table rows = $userCount")
+    }
+}
 
 fun main(args: Array<String>) {
     runApplication<InterviewMateApplication>(*args)

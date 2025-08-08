@@ -25,6 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-webflux") // for OpenAI WebClient calls
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     
     // Database
     implementation("org.postgresql:postgresql:42.7.3")
